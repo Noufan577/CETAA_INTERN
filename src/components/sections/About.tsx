@@ -3,7 +3,7 @@ import { useRef } from "react";
 import cetFront from "@/assets/cet-front.jpg.asset.json";
 import cetArch from "@/assets/cet-arch.jpg.asset.json";
 
-const paragraph = "Founded in 1939, the College of Engineering Trivandrum is one of India's oldest and most distinguished engineering institutions. Its arched portico, ribbed facade and rust-yellow walls have witnessed generations of engineers walk into the world carrying the same quiet conviction — that engineering is, in the end, an act of service.";
+const paragraph = "Founded on 3rd July 1939, the College of Engineering Trivandrum (CET) is one of India's oldest and most distinguished engineering institutions. Its arched portico, ribbed facade and rust-yellow walls have witnessed generations of engineers walk into the world carrying the same quiet conviction — that engineering is, in the end, an act of service. The CET Alumni Association (CETAA), established in 1976, today unites over 50,000 alumni across 22 global chapters.";
 
 export function About() {
   const ref = useRef<HTMLDivElement>(null);
@@ -46,7 +46,7 @@ export function About() {
 
           <h2 className="font-display text-4xl leading-[1.05] text-foreground md:text-6xl">
             An institution shaped by{" "}
-            <em className="not-italic text-gradient-gold font-medium">eight decades</em>{" "}
+            <em className="not-italic text-gradient-gold font-medium">nearly nine decades</em>{" "}
             of quiet excellence.
           </h2>
 
@@ -67,10 +67,10 @@ export function About() {
 
           <div className="mt-12 grid grid-cols-2 gap-8 border-t border-border pt-8">
             {[
-              { k: "1939", v: "Founded" },
-              { k: "Trivandrum", v: "Campus" },
-              { k: "16+", v: "Departments" },
-              { k: "Global", v: "Alumni network" },
+              { k: "1939", v: "Year founded" },
+              { k: "125 acres", v: "Campus, Kulathoor" },
+              { k: "8", v: "Departments" },
+              { k: "50,000+", v: "CETAA alumni" },
             ].map((s) => (
               <div key={s.v}>
                 <div className="font-display text-2xl text-navy-deep">{s.k}</div>

@@ -79,7 +79,7 @@ export function Hero() {
                 >
                   <div className="font-display text-[10px] uppercase tracking-[0.3em] text-gold/90">College of Engineering Trivandrum</div>
                   <div className="mt-2 h-px w-16 bg-gold/60 mx-auto" />
-                  <div className="mt-2 text-[10px] uppercase tracking-[0.28em] text-ivory/75">Est. 1939 · 85 Years of Legacy</div>
+                  <div className="mt-2 text-[10px] uppercase tracking-[0.28em] text-ivory/75">Est. 1939 · 86 Years of Excellence</div>
                 </motion.div>
               </div>
             </div>
@@ -111,7 +111,7 @@ export function Hero() {
             className="mb-8 inline-flex items-center gap-3 rounded-full border border-gold/30 bg-ivory px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.3em] text-navy-deep"
           >
             <span className="h-1.5 w-1.5 rounded-full bg-gold animate-[shimmer_2s_ease-in-out_infinite]" />
-            Diamond Jubilee · 1939 — 2024
+            CETAA · Est. 1976
           </motion.div>
 
           <h1 className="font-display text-5xl leading-[0.95] text-foreground md:text-6xl lg:text-7xl xl:text-[5.5rem]">
@@ -146,10 +146,10 @@ export function Hero() {
             transition={{ delay: 1.7, duration: 0.9 }}
             className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground"
           >
-            For over eight decades, the College of Engineering Trivandrum has shaped engineers,
+            Founded on 3rd July 1939, the College of Engineering Trivandrum (CET) has shaped engineers,
             entrepreneurs and leaders who carry its quiet, formidable legacy across the world.
-            The Alumni Association is the bridge that keeps that fellowship alive — across
-            batches, borders and generations.
+            The CET Alumni Association (CETAA), established in 1976, is the bridge that keeps
+            that fellowship alive — across batches, borders and generations.
           </motion.p>
 
           <motion.div
@@ -183,9 +183,9 @@ export function Hero() {
             className="mt-14 grid grid-cols-3 gap-6 border-t border-border/60 pt-6"
           >
             {[
-              { k: "85+", v: "Years of legacy" },
-              { k: "30K+", v: "Alumni worldwide" },
-              { k: "60+", v: "Countries reached" },
+              { k: "86+", v: "Years of excellence" },
+              { k: "50K+", v: "Alumni worldwide" },
+              { k: "22", v: "Global chapters" },
             ].map((s) => (
               <div key={s.v}>
                 <div className="font-display text-3xl text-navy-deep md:text-4xl">{s.k}</div>

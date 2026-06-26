@@ -1,85 +1,371 @@
-import { motion } from "framer-motion";
-import cetAerial from "@/assets/cet-aerial.jpg.asset.json";
-import cetArch from "@/assets/cet-arch.jpg.asset.json";
-import cetFront from "@/assets/cet-front.jpg.asset.json";
+import { motion, useMotionValue, useSpring, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useCallback } from "react";
+import ev1 from "@/assets/event-cetaa-day-2023.png.asset.json";
+import ev2 from "@/assets/event-swaralahari-2022.png.asset.json";
+import ev3 from "@/assets/event-agm-2024.png.asset.json";
+import ev4 from "@/assets/event-award-nite-2021.png.asset.json";
+import ev5 from "@/assets/event-guruvandanam-2021.png.asset.json";
+import ev6 from "@/assets/event-cetaa-day-2022.png.asset.json";
+import ev7 from "@/assets/event-hvac-2020.png.asset.json";
 
 const events = [
-  { title: "Global Alumni Meet", year: "2023", place: "Trivandrum", tag: "Reunion" },
-  { title: "Silver Jubilee Reunion '98", year: "2023", place: "CET Campus", tag: "Batch Meet" },
-  { title: "CETAA Tech Conclave", year: "2022", place: "Bengaluru", tag: "Conclave" },
-  { title: "Founders' Day Gala", year: "2022", place: "Trivandrum", tag: "Tradition" },
-  { title: "Gulf Chapter Convention", year: "2021", place: "Dubai", tag: "Chapter" },
-  { title: "Annual Endowment Lecture", year: "2021", place: "CET Campus", tag: "Lecture" },
-];
-
-const placeholders = [
-  cetFront.url,
-  cetArch.url,
-  cetAerial.url,
-  cetFront.url,
-  cetArch.url,
-  cetAerial.url,
+  {
+    num: "01",
+    title: "CETAA Day 2023",
+    year: "2023",
+    date: "22 July 2023",
+    place: "Diamond Jubilee Hall, CET",
+    tag: "Annual Meet",
+    img: ev1.url,
+    desc: "Annual alumni get-together celebrating 84 years of CET, honouring Silver (1998) and Golden (1973) Jubilee batches.",
+  },
+  {
+    num: "02",
+    title: "Swaralahari Relay Singing",
+    year: "2022",
+    date: "26 February 2022",
+    place: "Galaxy Hall, Trivandrum",
+    tag: "Cultural",
+    img: ev2.url,
+    desc: "Official Guinness World Records attempt — Most People in an Online Singing Video Relay, featuring ~300 CET alumni singers.",
+  },
+  {
+    num: "03",
+    title: "Annual General Body Meeting",
+    year: "2024",
+    date: "25 May 2024",
+    place: "CETAA Hall, CET Campus",
+    tag: "Governance",
+    img: ev3.url,
+    desc: "Election of the new Executive Committee and presentation of the 2023-24 annual report and accounts.",
+  },
+  {
+    num: "04",
+    title: "CETAA Award Nite 2021",
+    year: "2021",
+    date: "25 September 2021",
+    place: "Online (Zoom)",
+    tag: "Awards",
+    img: ev4.url,
+    desc: "The grand night honouring CET's most outstanding achievers across industries and geographies worldwide.",
+  },
+  {
+    num: "05",
+    title: "CETAA Guruvandanam 2021",
+    year: "2021",
+    date: "5 September 2021",
+    place: "Online (Zoom)",
+    tag: "Teachers' Day",
+    img: ev5.url,
+    desc: "A heartfelt tribute to teachers, with Guest of Honour Dr. Devdas Menon, Professor at IIT Madras.",
+  },
+  {
+    num: "06",
+    title: "CETAA Day 2022",
+    year: "2022",
+    date: "23 July 2022",
+    place: "Diamond Jubilee Hall, CET",
+    tag: "Annual Meet",
+    img: ev6.url,
+    desc: "Annual alumni get-together celebrating 83 years of CET (1939–2022), honouring Golden Jubilee (1972) batch and GWR certificate distribution.",
+  },
+  {
+    num: "07",
+    title: "HVAC Finishing Program 2020",
+    year: "2020",
+    date: "15 October 2020",
+    place: "Online (Zoom)",
+    tag: "Technical",
+    img: ev7.url,
+    desc: "18-module deep dive into Heating, Ventilation, Air-conditioning & Refrigeration for Mechanical Engineering students of CET, in association with Voltas.",
+  },
 ];
 
 export function PreviousEvents() {
-  return (
-    <section id="events" className="relative overflow-hidden bg-background py-28 md:py-40">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
-      <div className="mx-auto max-w-7xl px-6 md:px-10">
-        <div className="mb-3 flex items-center gap-3 text-[10px] uppercase tracking-[0.35em] text-gold">
-          <span className="h-px w-12 bg-gold" />
-          Previous Events
-        </div>
-        <h2 className="font-display text-4xl leading-[1.05] md:text-6xl">
-          A gallery of <em className="not-italic text-gradient-gold font-medium">gatherings</em>,
-          <br className="hidden md:block" /> frozen in time.
-        </h2>
-        <p className="mt-4 max-w-xl text-base text-muted-foreground">
-          Moments from reunions, conclaves and chapter conventions across the years —
-          carrying the CET spirit across geographies and generations.
-        </p>
+  const [active, setActive]   = useState(2);
+  const [lightbox, setLightbox] = useState<number | null>(null);
+  const [inSection, setInSection] = useState(false);
 
-        <div className="mt-16 [perspective:1600px]">
-          <div className="flex snap-x gap-6 overflow-x-auto pb-8 pr-6 [scrollbar-width:none] lg:overflow-visible lg:pr-0 [&::-webkit-scrollbar]:hidden">
-          {events.map((e, i) => (
-            <motion.article
-              key={e.title}
-              initial={{ opacity: 0, y: 34, rotateY: i % 2 ? -10 : 10 }}
-              whileInView={{ opacity: 1, y: 0, rotateY: i % 2 ? -4 : 4 }}
-              whileHover={{ y: -12, rotateY: 0, scale: 1.02 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.75, delay: i * 0.06, ease: [0.2, 0.8, 0.2, 1] }}
-              className="group relative w-[78vw] max-w-[360px] shrink-0 snap-center overflow-hidden rounded-sm border border-gold/20 bg-card shadow-elegant sm:w-[46vw] lg:w-[31%] lg:max-w-none"
+  /* ── Custom cursor ring ── */
+  const cursorX = useMotionValue(-300);
+  const cursorY = useMotionValue(-300);
+  const ringX = useSpring(cursorX, { stiffness: 180, damping: 22 });
+  const ringY = useSpring(cursorY, { stiffness: 180, damping: 22 });
+
+  useEffect(() => {
+    const onMove = (e: MouseEvent) => { cursorX.set(e.clientX); cursorY.set(e.clientY); };
+    window.addEventListener("mousemove", onMove);
+    return () => window.removeEventListener("mousemove", onMove);
+  }, [cursorX, cursorY]);
+
+  /* ── Nav ── */
+  const prev = useCallback(() => setActive((a) => (a - 1 + events.length) % events.length), []);
+  const next = useCallback(() => setActive((a) => (a + 1) % events.length), []);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (lightbox !== null) { if (e.key === "Escape") setLightbox(null); return; }
+      if (e.key === "ArrowLeft") prev();
+      if (e.key === "ArrowRight") next();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [prev, next, lightbox]);
+
+  /* Lock body scroll when lightbox is open */
+  useEffect(() => {
+    document.body.style.overflow = lightbox !== null ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [lightbox]);
+
+  return (
+    <>
+      {/* ──────────────── LIGHTBOX ──────────────── */}
+      <AnimatePresence>
+        {lightbox !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-[2000] flex items-center justify-center p-4 md:p-10"
+            onClick={() => setLightbox(null)}
+          >
+            {/* Backdrop */}
+            <div className="absolute inset-0 bg-black/92 backdrop-blur-md" />
+
+            {/* Poster */}
+            <motion.div
+              initial={{ scale: 0.82, opacity: 0, y: 40 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.88, opacity: 0, y: 20 }}
+              transition={{ duration: 0.4, ease: [0.2, 0.8, 0.2, 1] }}
+              className="relative z-10 flex max-h-[90vh] max-w-[520px] w-full flex-col items-center"
+              onClick={(e) => e.stopPropagation()}
             >
-              <div className="relative aspect-[4/5] overflow-hidden bg-navy-deep">
+              {/* Event poster — full size, no overlay */}
+              <div className="relative w-full overflow-hidden rounded-2xl border border-gold/40 shadow-[0_60px_160px_-20px_rgba(0,0,0,0.95)]">
                 <img
-                  src={placeholders[i % placeholders.length]}
-                  alt={e.title}
-                  loading="lazy"
-                  className="h-full w-full object-cover grayscale transition-all duration-[1200ms] ease-out group-hover:scale-110 group-hover:grayscale-0"
+                  src={events[lightbox].img}
+                  alt={events[lightbox].title}
+                  className="w-full object-contain"
+                  style={{ maxHeight: "78vh" }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy-deep via-navy-deep/35 to-navy-deep/5" />
-                <div className="absolute left-4 top-4 h-10 w-10 border border-gold/40" />
-                <div className="absolute right-4 top-4 rounded-full border border-ivory/35 bg-navy-deep/45 px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-ivory/90 backdrop-blur">
-                  {String(i + 1).padStart(2, "0")} / {String(events.length).padStart(2, "0")}
-                </div>
-                <div className="absolute inset-x-6 bottom-6 text-ivory">
-                  <div className="mb-2 flex items-center gap-3 text-[10px] uppercase tracking-[0.3em] text-gold">
-                    <span>{e.year}</span>
-                    <span className="h-px w-8 bg-gold/60" />
-                    <span>{e.tag}</span>
-                  </div>
-                  <h3 className="font-display text-2xl leading-tight md:text-3xl">{e.title}</h3>
-                  <div className="mt-2 text-sm text-ivory/70">{e.place}</div>
-                  <div className="mt-5 h-px w-12 bg-gold transition-all duration-500 group-hover:w-24" />
-                </div>
+                {/* Thin gold rim */}
+                <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-gold/30" />
               </div>
-              <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-gold/0 transition-all duration-500 group-hover:ring-gold/60" />
-            </motion.article>
-          ))}
+
+              {/* Caption bar */}
+              <div className="mt-4 flex w-full items-center justify-between rounded-xl border border-gold/20 bg-navy-deep/80 px-5 py-3 backdrop-blur">
+                <div>
+                  <div className="text-[9px] uppercase tracking-[0.3em] text-gold">{events[lightbox].tag} · {events[lightbox].date}</div>
+                  <div className="mt-0.5 font-display text-base text-ivory">{events[lightbox].title}</div>
+                </div>
+                <button
+                  onClick={() => setLightbox(null)}
+                  className="grid h-8 w-8 place-items-center rounded-full border border-ivory/20 text-ivory/60 transition-colors hover:border-gold hover:text-gold text-sm"
+                  aria-label="Close"
+                >✕</button>
+              </div>
+
+              {/* Prev / Next inside lightbox */}
+              <div className="mt-4 flex gap-3">
+                <button
+                  onClick={() => setLightbox((l) => ((l! - 1 + events.length) % events.length))}
+                  className="grid h-10 w-10 place-items-center rounded-full border border-ivory/20 bg-navy-deep/70 text-ivory transition-colors hover:border-gold hover:text-gold"
+                >←</button>
+                <span className="flex items-center text-[10px] tracking-[0.3em] text-ivory/40 uppercase">{events[lightbox].num} / 05</span>
+                <button
+                  onClick={() => setLightbox((l) => ((l! + 1) % events.length))}
+                  className="grid h-10 w-10 place-items-center rounded-full border border-ivory/20 bg-navy-deep/70 text-ivory transition-colors hover:border-gold hover:text-gold"
+                >→</button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* ──────────────── SECTION ──────────────── */}
+      <section
+        id="events"
+        className="relative overflow-hidden bg-background py-28 md:py-36"
+        onMouseEnter={() => setInSection(true)}
+        onMouseLeave={() => setInSection(false)}
+      >
+        {/* Cursor ring */}
+        <motion.div
+          style={{ x: ringX, y: ringY, translateX: "-50%", translateY: "-50%" }}
+          animate={{ opacity: inSection && lightbox === null ? 1 : 0, scale: inSection ? 1 : 0.4 }}
+          transition={{ opacity: { duration: 0.3 }, scale: { duration: 0.3 } }}
+          className="pointer-events-none fixed left-0 top-0 z-[999] h-16 w-16 rounded-full border-2 border-gold mix-blend-difference"
+        />
+        <motion.div
+          style={{ x: ringX, y: ringY, translateX: "-50%", translateY: "-50%" }}
+          animate={{ opacity: inSection && lightbox === null ? 1 : 0 }}
+          transition={{ opacity: { duration: 0.2 } }}
+          className="pointer-events-none fixed left-0 top-0 z-[999] h-2.5 w-2.5 rounded-full bg-gold"
+        />
+
+        {/* Top rule */}
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
+
+        {/* Header */}
+        <div className="mx-auto max-w-7xl px-6 md:px-10">
+          <div className="mb-3 flex items-center gap-3 text-[10px] uppercase tracking-[0.35em] text-gold">
+            <span className="h-px w-12 bg-gold" />
+            Previous Events
+          </div>
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+            <h2 className="font-display text-4xl leading-[1.05] md:text-6xl">
+              A gallery of{" "}
+              <em className="not-italic text-gradient-gold font-medium">gatherings</em>,
+              <br className="hidden md:block" /> frozen in time.
+            </h2>
+            <p className="max-w-xs text-sm text-muted-foreground sm:text-right">
+              Click any card to view the full event poster. Use ← → to navigate.
+            </p>
           </div>
         </div>
-      </div>
-    </section>
+
+        {/* ── Fan carousel ── */}
+        <div className="relative mt-16 flex h-[680px] items-center justify-center">
+          {events.map((e, i) => {
+            const offset   = i - active;
+            const abs      = Math.abs(offset);
+            const rotDeg   = offset * 11;
+            const tx       = offset * 260;
+            const ty       = abs * 50;
+            const scale    = Math.max(0.70, 1 - abs * 0.09);
+            const opacity  = Math.max(0.50, 1 - abs * 0.18);
+            const zIndex   = 30 - abs * 5;
+            const isActive = offset === 0;
+
+            return (
+              <motion.div
+                key={e.title}
+                style={{ zIndex, willChange: "transform" }}
+                animate={{ rotate: rotDeg, x: tx, y: ty, scale, opacity }}
+                transition={{
+                  type: "spring",
+                  stiffness: 380,
+                  damping: 38,
+                  mass: 0.7,
+                }}
+                whileHover={!isActive ? { y: ty - 20 } : {}}
+                onClick={() => isActive ? setLightbox(i) : setActive(i)}
+                className="absolute cursor-pointer"
+                title={isActive ? "Click to view full poster" : `View ${e.title}`}
+              >
+                {/* Ambient glow */}
+                {isActive && (
+                  <div className="pointer-events-none absolute -inset-10 -z-10 rounded-3xl bg-gold/18 blur-3xl" />
+                )}
+
+                {/* ── Card ── */}
+                <div
+                  className={`relative h-[580px] w-[380px] overflow-hidden rounded-2xl border transition-[border-color,box-shadow] duration-500 ${
+                    isActive
+                      ? "border-gold/55 shadow-[0_50px_120px_-15px_rgba(0,0,0,0.9),0_0_0_1px_rgba(212,175,55,0.2)]"
+                      : "border-white/8 shadow-[0_30px_70px_-15px_rgba(0,0,0,0.65)]"
+                  }`}
+                >
+                  {/* Poster */}
+                  <img
+                    src={e.img}
+                    alt={e.title}
+                    className={`absolute inset-0 h-full w-full object-cover object-top transition-all duration-700 ${
+                      isActive ? "grayscale-0 scale-[1.05]" : "grayscale scale-100"
+                    }`}
+                  />
+
+                  {/* Gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#04040e] via-[#04040e]/55 to-[#04040e]/5" />
+
+                  {/* Noise texture */}
+                  <div
+                    className="pointer-events-none absolute inset-0 opacity-[0.035] mix-blend-overlay"
+                    style={{ backgroundImage: "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/%3E%3C/svg%3E')", backgroundSize: "180px" }}
+                  />
+
+                  {/* Top row */}
+                  <div className="absolute inset-x-0 top-0 flex items-start justify-between p-7">
+                    <div className="font-display text-[4.5rem] font-bold leading-none tracking-tight text-ivory/55">
+                      {e.num}
+                    </div>
+                    <div className="flex flex-col items-end gap-2">
+                      <div className="rounded-full border border-ivory/20 bg-navy-deep/50 px-3 py-1 text-[9px] uppercase tracking-[0.3em] text-ivory/70 backdrop-blur">
+                        {e.tag}
+                      </div>
+                      {isActive && (
+                        <motion.div
+                          initial={{ opacity: 0, scale: 0.7 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          className="flex items-center gap-1.5 rounded-full border border-gold/50 bg-gold/10 px-3 py-1 text-[9px] uppercase tracking-[0.25em] text-gold backdrop-blur"
+                        >
+                          <span className="h-1.5 w-1.5 rounded-full bg-gold animate-pulse" />
+                          Tap to open
+                        </motion.div>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Bottom info */}
+                  <div className="absolute inset-x-0 bottom-0 p-7">
+                    <div className="mb-3 flex items-center gap-2 text-[10px] uppercase tracking-[0.3em] text-gold">
+                      <span className="h-px w-6 bg-gold/60" />
+                      {e.date}
+                    </div>
+                    <h3 className="font-display text-[1.6rem] font-medium leading-tight text-ivory">
+                      {e.title}
+                    </h3>
+                    <div className="mt-2 flex items-center gap-1.5 text-xs text-ivory/50">
+                      <span>📍</span>
+                      {e.place}
+                    </div>
+
+                    <motion.p
+                      animate={{ opacity: isActive ? 1 : 0, height: isActive ? "auto" : 0 }}
+                      transition={{ type: "spring", stiffness: 260, damping: 30, delay: isActive ? 0.1 : 0 }}
+                      className="mt-3 overflow-hidden text-sm leading-[1.7] text-ivory/45"
+                    >
+                      {e.desc}
+                    </motion.p>
+
+                    <motion.div
+                      animate={{ width: isActive ? 64 : 20 }}
+                      transition={{ type: "spring", stiffness: 320, damping: 36 }}
+                      className="mt-5 h-[1.5px] rounded-full bg-gradient-to-r from-gold to-gold/20"
+                    />
+                  </div>
+
+                  {/* Gold rim */}
+                  {isActive && (
+                    <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-gold/35" />
+                  )}
+                </div>
+              </motion.div>
+            );
+          })}
+
+          {/* Nav buttons */}
+          <button onClick={prev} className="absolute left-4 z-40 grid h-13 w-13 place-items-center rounded-full border border-ivory/25 bg-navy-deep/70 p-3 text-lg text-ivory backdrop-blur-sm transition-all duration-300 hover:border-gold hover:text-gold lg:left-10" aria-label="Previous">←</button>
+          <button onClick={next} className="absolute right-4 z-40 grid h-13 w-13 place-items-center rounded-full border border-ivory/25 bg-navy-deep/70 p-3 text-lg text-ivory backdrop-blur-sm transition-all duration-300 hover:border-gold hover:text-gold lg:right-10" aria-label="Next">→</button>
+        </div>
+
+        {/* Dot indicators */}
+        <div className="mt-10 flex items-center justify-center gap-2">
+          {events.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setActive(i)}
+              aria-label={`Go to event ${i + 1}`}
+              className={`rounded-full transition-all duration-400 ${
+                i === active ? "h-2 w-9 bg-gold" : "h-2 w-2 bg-ivory/25 hover:bg-ivory/50"
+              }`}
+            />
+          ))}
+        </div>
+      </section>
+    </>
   );
 }

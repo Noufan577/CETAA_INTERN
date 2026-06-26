@@ -222,7 +222,7 @@ function TransformationStory() {
           >
             From a beloved hall, to a{" "}
             <em className="not-italic text-gradient-gold font-medium">modern stage</em>{" "}
-            for the next 85 years.
+            for the next 87 years.
           </motion.h2>
           <div className="mt-10 space-y-8 text-base leading-relaxed text-charcoal/80">
             {[

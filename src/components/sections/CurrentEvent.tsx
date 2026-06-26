@@ -1,5 +1,6 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import type { MouseEvent } from "react";
+import { Link } from "@tanstack/react-router";
 
 export function CurrentEvent() {
   const x = useMotionValue(0);
@@ -44,25 +45,23 @@ export function CurrentEvent() {
             <div className="relative">
               <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-gold/50 bg-gold/10 px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.3em] text-gold">
                 <span className="h-1.5 w-1.5 rounded-full bg-gold animate-[shimmer_1.5s_ease-in-out_infinite]" />
-                Happening now
+                Major Initiative
               </div>
 
               <h3 className="font-display text-5xl leading-[1.0] text-ivory md:text-7xl">
-                Diamond Jubilee <em className="not-italic text-gradient-gold font-medium">Homecoming</em>
+                Diamond Jubilee <em className="not-italic text-gradient-gold font-medium">Hall Renovation</em>
               </h3>
 
               <p className="mt-6 max-w-2xl text-base leading-relaxed text-ivory/70 md:text-lg">
-                A weekend of remembrance, reunion and reinvention — featuring the unveiling of
-                the renovated Diamond Jubilee Hall, alumni keynotes, and a candlelight gala
-                under the central arch.
+                Join alumni worldwide in supporting the comprehensive modernization of our historic Diamond Jubilee Hall, introducing state-of-the-art air conditioning, acoustics, and expanded facilities while preserving its architectural legacy.
               </p>
 
               <div className="mt-10 grid grid-cols-2 gap-6 border-t border-ivory/10 pt-8 md:grid-cols-4">
                 {[
-                  { k: "Date", v: "Dec 14 — 16" },
+                  { k: "Goal", v: "Renovation" },
+                  { k: "Status", v: "Raising Funds" },
                   { k: "Venue", v: "CET Campus" },
-                  { k: "Format", v: "On-campus + Live" },
-                  { k: "Audience", v: "All batches" },
+                  { k: "Impact", v: "Future Generations" },
                 ].map((s) => (
                   <div key={s.k}>
                     <div className="text-[10px] uppercase tracking-[0.3em] text-gold/80">{s.k}</div>
@@ -71,14 +70,14 @@ export function CurrentEvent() {
                 ))}
               </div>
 
-              <div className="mt-10 flex flex-wrap gap-3">
-                <button className="magnetic-btn magnetic-btn-after group inline-flex items-center gap-3 rounded-full bg-gold px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-navy-deep">
-                  Reserve your seat
+              <div className="mt-10 flex flex-wrap gap-4">
+                <Link to="/diamond-jubilee" className="magnetic-btn magnetic-btn-after group inline-flex items-center gap-3 rounded-full bg-gold px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-navy-deep hover:bg-gold/90 transition-colors">
+                  Contribute Now
                   <span className="transition-transform duration-500 group-hover:translate-x-1">→</span>
-                </button>
-                <button className="rounded-full border border-ivory/30 px-7 py-4 text-sm font-medium uppercase tracking-[0.18em] text-ivory transition-all duration-500 hover:border-gold hover:bg-gold/10">
-                  View agenda
-                </button>
+                </Link>
+                <Link to="/diamond-jubilee" className="rounded-full border border-ivory/30 px-7 py-4 text-sm font-medium uppercase tracking-[0.18em] text-ivory transition-all duration-500 hover:border-gold hover:bg-gold/10">
+                  View Project Details
+                </Link>
               </div>
             </div>
           </motion.div>

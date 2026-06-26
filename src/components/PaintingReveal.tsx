@@ -78,7 +78,7 @@ export function PaintingReveal() {
           <div className="font-display text-xs tracking-[0.3em] text-gold/90 uppercase">College of Engineering</div>
           <div className="font-display text-lg font-semibold text-ivory">Trivandrum · since 1939</div>
         </div>
-        <div className="font-display text-3xl text-gold/80">85<span className="text-xs align-top">yrs</span></div>
+        <div className="font-display text-3xl text-gold/80">86<span className="text-xs align-top">yrs</span></div>
       </motion.div>
     </div>
   );

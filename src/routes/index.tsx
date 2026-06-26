@@ -10,9 +10,9 @@ import { Footer } from "@/components/sections/Footer";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "CET Alumni Association — Connecting Generations, Celebrating Legacy" },
-      { name: "description", content: "Eight decades of engineers, scholars and builders. The CET Alumni Association is the global fellowship of College of Engineering Trivandrum graduates." },
-      { property: "og:title", content: "CET Alumni Association" },
+      { title: "College of Engineering Trivandrum Alumni Association (CETAA) — Connecting Generations, Celebrating Legacy" },
+      { name: "description", content: "Over 86 years of engineers, scholars and builders. The CET Alumni Association (CETAA) is the global fellowship of College of Engineering Trivandrum graduates." },
+      { property: "og:title", content: "College of Engineering Trivandrum Alumni Association (CETAA)" },
       { property: "og:description", content: "Connecting Generations. Celebrating Legacy. Building the Future." },
     ],
   }),

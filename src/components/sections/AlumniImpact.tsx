@@ -2,10 +2,10 @@ import { motion, useInView, useMotionValue, useSpring, useTransform } from "fram
 import { useEffect, useRef } from "react";
 
 const stats = [
-  { value: 30000, suffix: "+", label: "Alumni worldwide" },
-  { value: 120, suffix: "+", label: "Projects supported" },
+  { value: 86, suffix: "yrs", label: "CET legacy since 1939" },
+  { value: 50000, suffix: "+", label: "CETAA alumni worldwide" },
+  { value: 22, suffix: "", label: "Global CETAA chapters" },
   { value: 250, suffix: "+", label: "Events conducted" },
-  { value: 85, suffix: "yrs", label: "Of legacy" },
 ];
 
 export function AlumniImpact() {

@@ -10,57 +10,72 @@ export function Footer() {
         ))}
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-6 py-20 md:px-10">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
-          <div className="md:col-span-2">
-            <div className="flex items-center gap-3">
-              <div className="grid h-12 w-12 place-items-center rounded-full border border-gold/60">
-                <span className="font-display text-base font-bold text-gold">CET</span>
-              </div>
-              <div>
-                <div className="font-display text-lg">CET Alumni Association</div>
-                <div className="text-[10px] uppercase tracking-[0.3em] text-ivory/50">College of Engineering Trivandrum</div>
-              </div>
+      <div className="relative mx-auto max-w-7xl px-6 py-16 md:px-10">
+        {/* Top: Branding + description */}
+        <div className="flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
+          <div className="flex items-center gap-3">
+            <div className="grid h-12 w-12 shrink-0 place-items-center rounded-full border border-gold/60">
+              <span className="font-display text-base font-bold text-gold">CET</span>
             </div>
-            <p className="mt-6 max-w-md text-sm leading-relaxed text-ivory/65">
-              A global fellowship of CETians — bridging eight decades of engineers, scholars and
-              builders. We exist to celebrate the legacy, strengthen the present, and shape what
-              CET becomes next.
-            </p>
+            <div>
+              <div className="font-display text-lg">CETAA</div>
+              <div className="text-[10px] uppercase tracking-[0.3em] text-ivory/50">College of Engineering Trivandrum Alumni Association</div>
+            </div>
           </div>
 
-          <FooterCol title="Explore" links={[["Home","/"],["About CET","/"],["Legacy","/"],["Events","/"]]} />
-          <FooterCol title="Engage" links={[["Diamond Jubilee","/diamond-jubilee"],["Contribute","/diamond-jubilee"],["Contact",""],["Chapters",""]]} />
+          <p className="max-w-sm text-sm leading-relaxed text-ivory/60">
+            A global fellowship of 50,000+ CETians across 22 chapters worldwide.
+            CETAA (est. 1976) — celebrating legacy, building the future.
+          </p>
         </div>
 
-        <div className="mt-16 flex flex-col items-start justify-between gap-6 border-t border-ivory/10 pt-8 text-xs text-ivory/50 md:flex-row md:items-center">
-          <div>© {new Date().getFullYear()} CET Alumni Association · College of Engineering Trivandrum</div>
-          <div className="flex items-center gap-6">
-            {["LinkedIn","Instagram","Facebook","YouTube"].map((s) => (
-              <a key={s} href="#" className="uppercase tracking-[0.3em] transition-colors hover:text-gold">{s}</a>
+        {/* Divider */}
+        <div className="my-10 h-px bg-ivory/10" />
+
+        {/* Bottom: horizontal nav + socials */}
+        <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
+          {/* Horizontal explore links */}
+          <nav className="flex flex-wrap items-center gap-x-8 gap-y-3">
+            <div className="text-[10px] uppercase tracking-[0.3em] text-gold mr-2">Explore</div>
+            {[
+              { label: "Home", to: "/" },
+              { label: "About CET", to: "/", hash: "about" },
+              { label: "Legacy", to: "/", hash: "legacy" },
+              { label: "Events", to: "/", hash: "events" },
+              { label: "Diamond Jubilee Hall", to: "/diamond-jubilee" },
+            ].map((item) => (
+              <Link
+                key={item.label}
+                to={item.to}
+                hash={item.hash}
+                className="text-sm text-ivory/75 transition-colors hover:text-gold"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Social links */}
+          <div className="flex items-center gap-5">
+            {[
+              { label: "LinkedIn", href: "https://www.linkedin.com/school/college-of-engineering-trivandrum" },
+              { label: "Instagram", href: "#" },
+              { label: "Facebook", href: "https://www.facebook.com/College-of-Engineering-Trivandrum-Alumni-Association-595120010597674" },
+              { label: "YouTube", href: "https://www.youtube.com/channel/UCJI_IdamgOdlw8ZcyDpQeRg" },
+            ].map((s) => (
+              <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer"
+                className="text-[10px] uppercase tracking-[0.3em] text-ivory/50 transition-colors hover:text-gold">
+                {s.label}
+              </a>
             ))}
           </div>
         </div>
+
+        {/* Copyright */}
+        <div className="mt-10 border-t border-ivory/10 pt-6 text-xs text-ivory/35">
+          © {new Date().getFullYear()} CETAA · College of Engineering Trivandrum Alumni Association · Thiruvananthapuram 695016
+        </div>
       </div>
     </footer>
-  );
-}
-
-function FooterCol({ title, links }: { title: string; links: [string, string][] }) {
-  return (
-    <div>
-      <div className="mb-5 text-[10px] uppercase tracking-[0.3em] text-gold">{title}</div>
-      <ul className="space-y-3 text-sm">
-        {links.map(([label, to]) => (
-          <li key={label}>
-            {to ? (
-              <Link to={to} className="text-ivory/80 transition-colors hover:text-gold">{label}</Link>
-            ) : (
-              <span className="text-ivory/80">{label}</span>
-            )}
-          </li>
-        ))}
-      </ul>
-    </div>
   );
 }

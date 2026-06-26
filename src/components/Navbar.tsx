@@ -37,7 +37,6 @@ export function Navbar() {
             { to: "/", hash: "about", label: "About" },
             { to: "/", hash: "legacy", label: "Legacy" },
             { to: "/", hash: "events", label: "Events" },
-            { to: "/diamond-jubilee", label: "Diamond Jubilee" },
           ].map((item) => (
             <Link
               key={item.label}
@@ -48,14 +47,17 @@ export function Navbar() {
               {item.label}
             </Link>
           ))}
+          {/* Diamond Jubilee — highlighted CTA nav item */}
+          <Link
+            to="/diamond-jubilee"
+            className="group relative inline-flex items-center gap-2 rounded-full border border-gold bg-gold px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-navy-deep shadow-[0_0_16px_-4px_var(--gold)] transition-all duration-300 hover:shadow-[0_0_28px_-2px_var(--gold)] hover:scale-105"
+          >
+            <span className="h-1.5 w-1.5 rounded-full bg-navy-deep animate-[shimmer_1.5s_ease-in-out_infinite]" />
+            Diamond Jubilee
+          </Link>
         </nav>
 
-        <Link
-          to="/diamond-jubilee"
-          className="hidden rounded-full border border-gold bg-gold/10 px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-navy-deep transition-all duration-500 hover:bg-gold hover:shadow-[0_10px_30px_-10px_var(--gold)] md:inline-block"
-        >
-          Contribute
-        </Link>
+
       </div>
     </motion.header>
   );

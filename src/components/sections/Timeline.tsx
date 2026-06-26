@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
 
 const milestones = [
-  { year: "1939", title: "Founded as Travancore's first engineering college", body: "Established under the vision of HH Sree Chithira Thirunal Maharaja with three foundational departments." },
-  { year: "1951", title: "Affiliation with University of Kerala", body: "Graduating cohorts begin to shape India's post-independence infrastructure." },
-  { year: "1971", title: "Expansion into modern disciplines", body: "Electronics, Computer Science and Industrial Engineering join the fold as the campus matures." },
-  { year: "1991", title: "Alumni Association formally constituted", body: "Bringing together generations of CETians under one organised, global fellowship." },
-  { year: "2010", title: "International alumni chapters launched", body: "Chapters across North America, the Gulf and Europe begin sustained engagement." },
-  { year: "2024", title: "Diamond Jubilee", body: "85 years of legacy — and the launch of the Diamond Jubilee Hall renovation campaign." },
+  { year: "1939", title: "CET Founded", body: "College of Engineering Trivandrum established on 3rd July 1939 — the first engineering college in the former Travancore State. First Principal: Maj T.H. Mathewman. Initial intake: 21 students across Civil, Mechanical & Electrical branches." },
+  { year: "1960", title: "Move to current campus", body: "CET shifts to its sprawling 125-acre campus in Kulathoor, Trivandrum — shaping the landscape generations of CETians would call home." },
+  { year: "1976", title: "CETAA Formally Established", body: "The College of Engineering Trivandrum Alumni Association (CETAA) is registered, uniting generations of CETians under one organised, global fellowship." },
+  { year: "1999", title: "Diamond Jubilee Hall Built", body: "CET celebrates its 60th anniversary (Diamond Jubilee). The iconic Diamond Jubilee Hall — a 1,000-seat auditorium — is built as a lasting monument to the occasion." },
+  { year: "2010", title: "Global CETAA chapters launched", body: "CETAA expands internationally with chapters across India, the Gulf (Kuwait, UAE, Qatar, Bahrain), Australia and North America, now totalling 22 chapters worldwide." },
+  { year: "2026", title: "CETAA Golden Jubilee & Hall Renovation", body: "2026 marks CETAA's 50th anniversary (Golden Jubilee). The global alumni fellowship unites to renovate and modernise the historic Diamond Jubilee Hall for future generations." },
 ];
 
 export function Timeline() {
@@ -22,7 +22,7 @@ export function Timeline() {
             Legacy Timeline
           </div>
           <h2 className="font-display text-4xl leading-[1.05] md:text-6xl">
-            Eight decades, told in <em className="not-italic text-gradient-gold font-medium">light & shadow.</em>
+            Nearly nine decades, told in <em className="not-italic text-gradient-gold font-medium">light & shadow.</em>
           </h2>
         </div>
 
