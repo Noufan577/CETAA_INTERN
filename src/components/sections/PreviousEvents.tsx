@@ -259,7 +259,7 @@ export function PreviousEvents() {
                 }}
                 whileHover={!isActive ? { y: ty - 20 } : {}}
                 onClick={() => isActive ? setLightbox(i) : setActive(i)}
-                className="absolute cursor-pointer"
+                className="absolute cursor-pointer transform-gpu backface-hidden"
                 title={isActive ? "Click to view full poster" : `View ${e.title}`}
               >
                 {/* Ambient glow */}
@@ -281,7 +281,7 @@ export function PreviousEvents() {
                   <img
                     src={e.img}
                     alt={e.title}
-                    className="absolute inset-0 h-full w-full object-cover object-top"
+                    className="absolute inset-0 h-full w-full object-cover object-top transform-gpu backface-hidden"
                   />
 
                   {/* Gradient overlay */}
