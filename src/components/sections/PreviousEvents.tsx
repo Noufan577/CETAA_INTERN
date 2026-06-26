@@ -1,12 +1,12 @@
 import { motion, useMotionValue, useSpring, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useCallback } from "react";
-import ev1 from "@/assets/event-cetaa-day-2023.png.asset.json";
-import ev2 from "@/assets/event-swaralahari-2022.png.asset.json";
-import ev3 from "@/assets/event-agm-2024.png.asset.json";
-import ev4 from "@/assets/event-award-nite-2021.png.asset.json";
-import ev5 from "@/assets/event-guruvandanam-2021.png.asset.json";
-import ev6 from "@/assets/event-cetaa-day-2022.png.asset.json";
-import ev7 from "@/assets/event-hvac-2020.png.asset.json";
+import ev1 from "@/assets/Screenshot 2026-06-26 234252.png";
+import ev2 from "@/assets/Screenshot 2026-06-26 234308.png";
+import ev3 from "@/assets/Screenshot 2026-06-26 234324.png";
+import ev4 from "@/assets/Screenshot 2026-06-26 234439.png";
+import ev5 from "@/assets/Screenshot 2026-06-26 234455.png";
+import ev6 from "@/assets/image.png";
+import ev7 from "@/assets/image copy.png";
 
 const events = [
   {
@@ -16,7 +16,7 @@ const events = [
     date: "22 July 2023",
     place: "Diamond Jubilee Hall, CET",
     tag: "Annual Meet",
-    img: ev1.url,
+    img: ev1,
     desc: "Annual alumni get-together celebrating 84 years of CET, honouring Silver (1998) and Golden (1973) Jubilee batches.",
   },
   {
@@ -26,7 +26,7 @@ const events = [
     date: "26 February 2022",
     place: "Galaxy Hall, Trivandrum",
     tag: "Cultural",
-    img: ev2.url,
+    img: ev2,
     desc: "Official Guinness World Records attempt — Most People in an Online Singing Video Relay, featuring ~300 CET alumni singers.",
   },
   {
@@ -36,7 +36,7 @@ const events = [
     date: "25 May 2024",
     place: "CETAA Hall, CET Campus",
     tag: "Governance",
-    img: ev3.url,
+    img: ev3,
     desc: "Election of the new Executive Committee and presentation of the 2023-24 annual report and accounts.",
   },
   {
@@ -46,7 +46,7 @@ const events = [
     date: "25 September 2021",
     place: "Online (Zoom)",
     tag: "Awards",
-    img: ev4.url,
+    img: ev4,
     desc: "The grand night honouring CET's most outstanding achievers across industries and geographies worldwide.",
   },
   {
@@ -56,7 +56,7 @@ const events = [
     date: "5 September 2021",
     place: "Online (Zoom)",
     tag: "Teachers' Day",
-    img: ev5.url,
+    img: ev5,
     desc: "A heartfelt tribute to teachers, with Guest of Honour Dr. Devdas Menon, Professor at IIT Madras.",
   },
   {
@@ -66,7 +66,7 @@ const events = [
     date: "23 July 2022",
     place: "Diamond Jubilee Hall, CET",
     tag: "Annual Meet",
-    img: ev6.url,
+    img: ev6,
     desc: "Annual alumni get-together celebrating 83 years of CET (1939–2022), honouring Golden Jubilee (1972) batch and GWR certificate distribution.",
   },
   {
@@ -76,7 +76,7 @@ const events = [
     date: "15 October 2020",
     place: "Online (Zoom)",
     tag: "Technical",
-    img: ev7.url,
+    img: ev7,
     desc: "18-module deep dive into Heating, Ventilation, Air-conditioning & Refrigeration for Mechanical Engineering students of CET, in association with Voltas.",
   },
 ];

@@ -3,10 +3,10 @@ import { motion, useTransform, useMotionValue, useSpring } from "framer-motion";
 import { useRef, useEffect, useCallback, useState } from "react";
 import { getLenis } from "@/components/SmoothScroll";
 import { Footer } from "@/components/sections/Footer";
-import djHall from "@/assets/doamond-jubilee-hall-1.jpg.asset.json";
-import djPanoramic from "@/assets/diamond-jubilee-hall-panamoodu-lane-thiruvananthapuram-auditoriums-worJzusokj.jpg.asset.json";
-import djGate from "@/assets/images (1).jpg.asset.json";
-import djInside from "@/assets/doamond-jubilee-hall-inside.jpg.asset.json";
+import djHall from "@/assets/doamond-jubilee-hall-1.jpg";
+import djPanoramic from "@/assets/diamond-jubilee-hall-panamoodu-lane-thiruvananthapuram-auditoriums-worJzusokj.jpg";
+import djGate from "@/assets/images (1).jpg";
+import djInside from "@/assets/doamond-jubilee-hall-inside.jpg";
 
 export const Route = createFileRoute("/diamond-jubilee")({
   head: () => ({
@@ -15,7 +15,7 @@ export const Route = createFileRoute("/diamond-jubilee")({
       { name: "description", content: "Honouring our legacy. Building a modern space for future generations. Join the CET alumni community in renovating the Diamond Jubilee Hall." },
       { property: "og:title", content: "Diamond Jubilee Hall Renovation · CETAA" },
       { property: "og:description", content: "Be part of CET's next chapter. Every contribution strengthens the legacy of CET." },
-      { property: "og:image", content: djHall.url },
+      { property: "og:image", content: djHall },
     ],
   }),
   component: DiamondJubilee,
@@ -120,7 +120,7 @@ function JubileeHero() {
       <div className="sticky top-0 h-screen overflow-hidden">
         {/* Background image – starts b&w, colours in as you scroll */}
         <motion.div style={{ filter, scale }} className="absolute inset-0">
-          <img src={djHall.url} alt="Diamond Jubilee Hall" className="h-full w-full object-cover" />
+          <img src={djHall} alt="Diamond Jubilee Hall" className="h-full w-full object-cover" />
         </motion.div>
 
         {/* Gold overlay appears once colour fills in */}
@@ -190,7 +190,7 @@ function TransformationStory() {
             className="relative aspect-[4/5] overflow-hidden rounded-sm shadow-elegant"
           >
             <img
-              src={djPanoramic.url}
+              src={djPanoramic}
               alt="Diamond Jubilee Hall – Then to Now"
               className="h-full w-full object-cover"
             />
@@ -301,10 +301,10 @@ function Objectives() {
 }
 
 const gallery = [
-  { src: djHall.url,      span: "md:col-span-2 md:row-span-2", alt: "Diamond Jubilee Auditorium – Front Elevation" },
-  { src: djGate.url,      span: "",                            alt: "Diamond Jubilee Auditorium – Main Gate" },
-  { src: djInside.url,    span: "md:col-span-2",               alt: "Auditorium Stage & Interior – Seating" },
-  { src: djPanoramic.url, span: "",                            alt: "Side Elevation – Entrance Portico" },
+  { src: djHall,      span: "md:col-span-2 md:row-span-2", alt: "Diamond Jubilee Auditorium – Front Elevation" },
+  { src: djGate,      span: "",                            alt: "Diamond Jubilee Auditorium – Main Gate" },
+  { src: djInside,    span: "md:col-span-2",               alt: "Auditorium Stage & Interior – Seating" },
+  { src: djPanoramic, span: "",                            alt: "Side Elevation – Entrance Portico" },
 ];
 
 function Gallery() {

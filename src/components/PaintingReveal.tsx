@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import cetPainting from "@/assets/cet-painting.png.asset.json";
+import cetPainting from "@/assets/cet-painting.png";
 
 /**
  * Four brush strokes progressively unmask the image.
@@ -48,7 +48,7 @@ export function PaintingReveal() {
         <rect width="1200" height="900" fill="var(--ivory)" />
 
         <motion.image
-          href={cetPainting.url}
+          href={cetPainting}
           width="1200"
           height="900"
           preserveAspectRatio="xMidYMid slice"

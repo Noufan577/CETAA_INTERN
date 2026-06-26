@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import cetFront from "@/assets/cet-front.jpg.asset.json";
-import cetArch from "@/assets/cet-arch.jpg.asset.json";
+import cetFront from "@/assets/cet-front.jpg";
+import cetArch from "@/assets/cet-arch.jpg";
 
 const paragraph = "Founded on 3rd July 1939, the College of Engineering Trivandrum (CET) is one of India's oldest and most distinguished engineering institutions. Its arched portico, ribbed facade and rust-yellow walls have witnessed generations of engineers walk into the world carrying the same quiet conviction — that engineering is, in the end, an act of service. The CET Alumni Association (CETAA), established in 1976, today unites over 50,000 alumni across 22 global chapters.";
 
@@ -21,13 +21,13 @@ export function About() {
             style={{ y: y1 }}
             className="absolute left-0 top-0 h-[70%] w-[70%] overflow-hidden rounded-sm shadow-elegant"
           >
-            <img src={cetFront.url} alt="CET main building facade" className="h-full w-full object-cover" loading="lazy" />
+            <img src={cetFront} alt="CET main building facade" className="h-full w-full object-cover" loading="lazy" />
           </motion.div>
           <motion.div
             style={{ y: y2 }}
             className="absolute bottom-0 right-0 h-[55%] w-[55%] overflow-hidden rounded-sm border-2 border-ivory shadow-gold"
           >
-            <img src={cetArch.url} alt="CET central arch" className="h-full w-full object-cover" loading="lazy" />
+            <img src={cetArch} alt="CET central arch" className="h-full w-full object-cover" loading="lazy" />
           </motion.div>
           <div className="absolute -bottom-6 left-6 font-display text-[8rem] leading-none text-gold/15 md:text-[12rem]">'39</div>
         </div>

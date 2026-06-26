@@ -1,8 +1,8 @@
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "@tanstack/react-router";
-import entranceVideo from "@/assets/entrance-full.mp4.asset.json";
-import entranceFinalFrame from "@/assets/entrance-final.jpg.asset.json";
+import entranceVideo from "@/assets/entrance-full.mp4";
+import entranceFinalFrame from "@/assets/entrance-final.jpg";
 
 const headline = ["CET", "Alumni", "Association"];
 
@@ -50,19 +50,19 @@ export function Hero() {
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm border border-gold/30 bg-navy-deep/40 shadow-elegant md:aspect-[3/4]">
               <video
                 ref={videoRef}
-                src={entranceVideo.url}
+                src={entranceVideo}
                 autoPlay
                 muted
                 playsInline
                 preload="auto"
                 loop={false}
-                poster={entranceFinalFrame.url}
+                poster={entranceFinalFrame}
                 onPlay={handlePlay}
                 onEnded={handleEnded}
                 className="absolute inset-0 h-full w-full object-cover"
               />
               <img
-                src={entranceFinalFrame.url}
+                src={entranceFinalFrame}
                 alt="College of Engineering Trivandrum name frame"
                 aria-hidden={!showFinalFrame}
                 className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${showFinalFrame ? "opacity-100" : "opacity-0"}`}
