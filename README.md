@@ -1,4 +1,4 @@
-﻿# CETAA - College of Engineering Trivandrum Alumni Association
+# CETAA - College of Engineering Trivandrum Alumni Association
 
 Official alumni web presence for the College of Engineering Trivandrum Alumni Association (CETAA) -
 a global fellowship of 50,000+ CETians across 22 chapters worldwide, celebrating 86 years of legacy since 1939.
@@ -7,7 +7,9 @@ a global fellowship of 50,000+ CETians across 22 chapters worldwide, celebrating
 
 ## About the Project
 
-This is the official website for **CETAA** (College of Engineering Trivandrum Alumni Association), built to:
+> **Internship Assignment:** This project was exclusively developed and submitted as part of the **CETAA Web Team Internship Selection Process**.
+
+This is a modern web experience built for **CETAA** (College of Engineering Trivandrum Alumni Association) designed to:
 
 - Showcase the rich **86-year legacy** of CET (est. 3 July 1939)
 - Connect alumni worldwide through a modern, premium web experience
@@ -183,13 +185,13 @@ Save it as: src/assets/event-NAME.png.asset.json
 
 ---
 
-## Contact
+## Developer & Contact
 
-CETAA - College of Engineering Trivandrum Alumni Association
-Thiruvananthapuram - 695016, Kerala, India
-Email: secretarycetaa@cet.ac.in
-Web: alumni.cet.ac.in
-Phone: 0471-2515685
+**Developed By:** Noufan  
+**GitHub:** [@Noufan577](https://github.com/Noufan577)  
+**Repository:** [CETAA_INTERN](https://github.com/Noufan577/CETAA_INTERN)
+
+*Built and submitted for the CETAA Web Team Internship Selection Process.*
 
 ---
 
