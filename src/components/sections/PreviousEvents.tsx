@@ -269,11 +269,11 @@ export function PreviousEvents() {
 
                 {/* ── Card ── */}
                 <div
-                  className={`relative overflow-hidden rounded-2xl border transition-[border-color,box-shadow] duration-500 ${
+                  className={`relative overflow-hidden rounded-2xl border transition-colors duration-300 ${
                     isMobile ? "h-[460px] w-[310px]" : "h-[580px] w-[380px]"
                   } ${
                     isActive
-                      ? "border-gold/55 shadow-[0_50px_120px_-15px_rgba(0,0,0,0.9),0_0_0_1px_rgba(212,175,55,0.2)]"
+                      ? "border-gold/55 shadow-[0_50px_120px_-15px_rgba(0,0,0,0.9)]"
                       : "border-white/8 shadow-[0_30px_70px_-15px_rgba(0,0,0,0.65)]"
                   }`}
                 >
@@ -281,19 +281,11 @@ export function PreviousEvents() {
                   <img
                     src={e.img}
                     alt={e.title}
-                    className={`absolute inset-0 h-full w-full object-cover object-top transition-all duration-700 ${
-                      isActive ? "grayscale-0 scale-[1.05]" : "grayscale scale-100"
-                    }`}
+                    className="absolute inset-0 h-full w-full object-cover object-top"
                   />
 
                   {/* Gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#04040e] via-[#04040e]/55 to-[#04040e]/5" />
-
-                  {/* Noise texture */}
-                  <div
-                    className="pointer-events-none absolute inset-0 opacity-[0.035] mix-blend-overlay"
-                    style={{ backgroundImage: "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/%3E%3C/svg%3E')", backgroundSize: "180px" }}
-                  />
 
                   {/* Top row */}
                   <div className="absolute inset-x-0 top-0 flex items-start justify-between p-7">
