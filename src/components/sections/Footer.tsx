@@ -15,7 +15,7 @@ export function Footer() {
         <div className="flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
           <div className="flex items-center gap-3">
             <div className="grid h-12 w-12 shrink-0 place-items-center rounded-full border border-gold/60">
-              <span className="font-display text-base font-bold text-gold">CET</span>
+              <span className="font-display text-sm font-bold text-gold">CETAA</span>
             </div>
             <div>
               <div className="font-display text-lg">CETAA</div>

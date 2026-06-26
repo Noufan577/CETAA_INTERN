@@ -23,7 +23,7 @@ export function Navbar() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-10">
         <Link to="/" className="group flex items-center gap-3">
           <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-gold/60 bg-navy-deep">
-            <span className="font-display text-sm font-bold text-gold">CET</span>
+            <span className="font-display text-xs font-bold text-gold">CETAA</span>
           </div>
           <div className="hidden min-w-0 sm:block">
             <div className="font-display text-base font-semibold leading-tight text-foreground">CET Alumni Association</div>

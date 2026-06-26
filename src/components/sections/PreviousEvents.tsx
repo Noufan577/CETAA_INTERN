@@ -254,10 +254,8 @@ export function PreviousEvents() {
                 style={{ zIndex, willChange: "transform" }}
                 animate={{ rotate: rotDeg, x: tx, y: ty, scale, opacity }}
                 transition={{
-                  type: "spring",
-                  stiffness: 380,
-                  damping: 38,
-                  mass: 0.7,
+                  duration: 0.85,
+                  ease: [0.2, 0.8, 0.2, 1],
                 }}
                 whileHover={!isActive ? { y: ty - 20 } : {}}
                 onClick={() => isActive ? setLightbox(i) : setActive(i)}
