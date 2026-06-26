@@ -85,6 +85,14 @@ export function PreviousEvents() {
   const [active, setActive]   = useState(2);
   const [lightbox, setLightbox] = useState<number | null>(null);
   const [inSection, setInSection] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   /* ── Custom cursor ring ── */
   const cursorX = useMotionValue(-300);
@@ -228,15 +236,15 @@ export function PreviousEvents() {
         </div>
 
         {/* ── Fan carousel ── */}
-        <div className="relative mt-16 flex h-[680px] items-center justify-center">
+        <div className={`relative mt-16 flex items-center justify-center ${isMobile ? "h-[520px]" : "h-[680px]"}`}>
           {events.map((e, i) => {
             const offset   = i - active;
             const abs      = Math.abs(offset);
-            const rotDeg   = offset * 11;
-            const tx       = offset * 260;
-            const ty       = abs * 50;
-            const scale    = Math.max(0.70, 1 - abs * 0.09);
-            const opacity  = Math.max(0.50, 1 - abs * 0.18);
+            const rotDeg   = offset * (isMobile ? 6 : 11);
+            const tx       = offset * (isMobile ? 120 : 260);
+            const ty       = abs * (isMobile ? 25 : 50);
+            const scale    = Math.max(isMobile ? 0.75 : 0.70, 1 - abs * 0.09);
+            const opacity  = Math.max(isMobile ? 0.2 : 0.50, 1 - abs * (isMobile ? 0.35 : 0.18));
             const zIndex   = 30 - abs * 5;
             const isActive = offset === 0;
 
@@ -263,7 +271,9 @@ export function PreviousEvents() {
 
                 {/* ── Card ── */}
                 <div
-                  className={`relative h-[580px] w-[380px] overflow-hidden rounded-2xl border transition-[border-color,box-shadow] duration-500 ${
+                  className={`relative overflow-hidden rounded-2xl border transition-[border-color,box-shadow] duration-500 ${
+                    isMobile ? "h-[460px] w-[310px]" : "h-[580px] w-[380px]"
+                  } ${
                     isActive
                       ? "border-gold/55 shadow-[0_50px_120px_-15px_rgba(0,0,0,0.9),0_0_0_1px_rgba(212,175,55,0.2)]"
                       : "border-white/8 shadow-[0_30px_70px_-15px_rgba(0,0,0,0.65)]"
@@ -348,8 +358,8 @@ export function PreviousEvents() {
           })}
 
           {/* Nav buttons */}
-          <button onClick={prev} className="absolute left-4 z-40 grid h-13 w-13 place-items-center rounded-full border border-ivory/25 bg-navy-deep/70 p-3 text-lg text-ivory backdrop-blur-sm transition-all duration-300 hover:border-gold hover:text-gold lg:left-10" aria-label="Previous">←</button>
-          <button onClick={next} className="absolute right-4 z-40 grid h-13 w-13 place-items-center rounded-full border border-ivory/25 bg-navy-deep/70 p-3 text-lg text-ivory backdrop-blur-sm transition-all duration-300 hover:border-gold hover:text-gold lg:right-10" aria-label="Next">→</button>
+          <button onClick={prev} className={`absolute z-40 grid place-items-center rounded-full border border-ivory/25 bg-navy-deep/70 text-ivory backdrop-blur-sm transition-all duration-300 hover:border-gold hover:text-gold ${isMobile ? "left-2 h-10 w-10 p-2 text-base" : "left-4 lg:left-10 h-13 w-13 p-3 text-lg"}`} aria-label="Previous">←</button>
+          <button onClick={next} className={`absolute z-40 grid place-items-center rounded-full border border-ivory/25 bg-navy-deep/70 text-ivory backdrop-blur-sm transition-all duration-300 hover:border-gold hover:text-gold ${isMobile ? "right-2 h-10 w-10 p-2 text-base" : "right-4 lg:right-10 h-13 w-13 p-3 text-lg"}`} aria-label="Next">→</button>
         </div>
 
         {/* Dot indicators */}
